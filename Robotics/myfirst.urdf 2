@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot name="single_arm">
+
+	<link name="world">
+	</link>
+
+	<link name="arm1">
+		<visual>
+			<geometry>
+				<box size="0.1 0.1 1"/>
+			</geometry>
+			<material name="red">
+				<color rgba="1 0 0 1"/>
+			</material>
+			<origin rpy="0 0 0" xyz="0 0 0.5"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.1 0.1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.5"/>
+		</collision>
+	</link>
+
+	<link name="rot1">
+	</link>
+	<link name="rot2">
+	</link>
+
+	<link name="arm2">
+		<visual>
+			<geometry>
+				<box size="0.1 0.1 1"/>
+			</geometry>
+			<material name="blue">
+				<color rgba="0 0 1 1"/>
+			</material>
+			<origin rpy="0 0 0" xyz="0 0 0.5"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.1 0.1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.5"/>
+		</collision>
+	</link>
+
+	<joint name="j1" type="continuous">
+		<parent link="world"/>
+		<child link="rot1"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<joint name="j2" type="revolute">
+		<parent link="rot1"/>
+		<child link="arm1"/>
+		<axis xyz="1 0 0"/>
+		<limit effort="1000" velocity="0.5" lower="-1.5708" upper="1.5708"/>
+	</joint>
+
+	<joint name="j3" type="continuous">
+		<parent link="arm1"/>
+		<child link="rot2"/>
+		<axis xyz="0 0 1"/>
+		<origin rpy="0 0 0" xyz="0 0 1"/>
+	</joint>
+
+	<joint name="j4" type="revolute">
+		<parent link="rot2"/>
+		<child link="arm2"/>
+		<axis xyz="1 0 0"/>
+		<limit effort="1000" velocity="0.5" lower="-1.5708" upper="1.5708"/>
+	</joint>
+
+</robot>
