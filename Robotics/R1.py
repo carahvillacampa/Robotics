@@ -8,7 +8,7 @@ p.setGravity(0,0,-10)
 planeId=p.loadURDF("plane.urdf")
 cubeStartPos=[0,0,1]
 cubeStartOrientation=p.getQuaternionFromEuler([0,0,0])
-ur=p.loadURDF("myFirst.urdf",cubeStartPos,cubeStartOrientation)
+ur=p.loadURDF("sample_robot.urdf",cubeStartPos,cubeStartOrientation)
 print("Number of joints: "+str(p.getNumJoints(ur)))
 ##can write a for loop and base it off of the number of joints
 
